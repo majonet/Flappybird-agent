@@ -56,7 +56,7 @@ class Agent:
             if os.path.exists(self.RESUME_MODEL_FILE):
                 policy_dqn.load_state_dict(torch.load(self.RESUME_MODEL_FILE,map_location=device))
                 print("Loaded flappybirdv0_backup.pt")
-            epsilon=self.epsilon_min
+            epsilon=self.epsilon_init
             target_dqn=DQN(num_states,num_actions).to(device)
             target_dqn.load_state_dict(policy_dqn.state_dict())
             steps=0
